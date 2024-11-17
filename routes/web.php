@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SendEmailController;
 use App\Models\Book;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ Route::get('/', function () {
 });
 
 Route::resource('book', BookController::class);
+Route::get('get/buku/{filename}', [BookController::class, 'lihatgambar'])->name('get.buku');
+
 
 
 Route::controller(LoginRegisterController::class)->group(function() {
@@ -33,6 +36,8 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+Route::resource('gallery', GalleryController::class);
+
 
 Route::get('/sendemail', [SendEmailController::class, 'index'])->name('kirim-email');
 

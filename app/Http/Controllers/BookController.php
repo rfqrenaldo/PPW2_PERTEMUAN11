@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -90,5 +91,10 @@ class BookController extends Controller
         $book->save();
 
         return redirect('/book')->with('updated', 'Data buku berhasil diperbarui');
+    }
+
+    public function lihatgambar($filename)
+    {
+        return Storage::get('public/'.$filename);
     }
 }

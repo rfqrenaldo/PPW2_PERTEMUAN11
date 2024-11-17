@@ -118,7 +118,7 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{ $book->id }}</td>
-                    <td><img src="{{ asset('storage/' . $book->photo) }}" width="150px" alt=""></td>
+                    <td><img src="{{ route('get.buku', ['filename' => $book->photo ?? 'a']) }}" width="150px" alt=""></td>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->author->name }}</td>
                     <td>{{ "Rp. " . number_format($book->price, 2, ',', '.') }}</td>
